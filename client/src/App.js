@@ -14,6 +14,7 @@ import NavBar from './layout/NavBar'
 import Footer from './layout/Footer'
 import Test from './layout/Test'
 import ModalExample from './chat/ModalExample'
+import AllConversations from './Conversations/AllConversations'
 //history
 import history from './history'
 
@@ -30,6 +31,7 @@ class App extends Component {
         <Route exact path="/test" component={Test}/>
         <Route exact path="/chat" component={MainChat}/>
         <Route exact path="/modal" component={ModalExample}/>
+        <Route exact path="/conversations" component={AllConversations}/>
         <Footer />
         </Router>
    
