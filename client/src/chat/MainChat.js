@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Pusher from 'pusher-js';
+import config from '../config';
+import io from 'socket.io-client';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox';
 import ChatNav from './ChatNav'
