@@ -1,62 +1,115 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Pusher from 'pusher-js';
-import config from '../config';
+
 import io from 'socket.io-client';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox';
 import ChatNav from './ChatNav'
+import config from '../config';
 
+
+
+import BottomBar from '../BottomBar';
 
 
 class MainChat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '',
-      username: '',
-      chats: []
+      chat: [],
+      content: '',
+      name: '',
     };
   }
 
   componentDidMount() {
- 
-    const username = window.prompt('Username: ', 'Barry White');
-    this.setState({ username });
-   
-    var pusher = new Pusher('eaa5420a1b2b42547009', {
-      cluster: 'us2',
-      forceTLS: true
+    this.socket = io(config[process.env.NODE_ENV].endpoint);
+
+    // Load the last 10 messages in the window.
+    this.socket.on('init', (msg) => {
+      this.setState((state) => ({
+        chat: [...state.chat, ...msg.reverse()],
+      }));
     });
-    const channel = pusher.subscribe('chat');
-    channel.bind('message', data => {
-      this.setState({ chats: [...this.state.chats, data], test: '' });
+
+    // Update the chat if a new message is broadcasted.
+    this.socket.on('push', (msg) => { 
+      this.setState((state) => ({
+        chat: [...state.chat, msg],
+      }));
     });
-    this.handleTextChange = this.handleTextChange.bind(this);
   }
 
-  handleTextChange(e) {
-    if (e.keyCode === 13) {
-      const payload = { 
-        username: this.state.username,
-        message: this.state.text
-      }; console.log(payload)
-      axios.post('http://localhost:5000/message', payload);
-      this.setState({ text: ''})
-    } else {
-      this.setState({ text: e.target.value });
-    }
+   // Save the message the user is typing in the input field.
+   handleContent(event) {
+    this.setState({
+      content: event.target.value,
+    });
   }
 
-  render() { console.log(this.state)
+  //
+  handleName(event) {
+    this.setState({
+      name: event.target.value,
+    });
+  }
+  // When the user is posting a new message.
+  handleSubmit(event) {
+    console.log(event);
+
+    // Prevent the form to reload the current page.
+    event.preventDefault();
+
+    this.setState((state) => {
+      console.log(state);
+      console.log('this', this.socket);
+      // Send the new message to the server.
+      this.socket.emit('message', {
+        name: state.name,
+        content: state.content,
+      });
+
+      // Update the chat with the user's message and remove the current message.
+      return {
+        chat: [...state.chat, {
+          name: state.name,
+          content: state.content,
+        }],
+        content: '',
+      };
+    });
+  }
+
+
+
+
+
+
+
+
+
+  render() { console.log(this.state.chat)
     return (
+      <div>
+        
+        <BottomBar
+          content={this.state.content}
+          handleContent={this.handleContent.bind(this)}
+          handleName={this.handleName.bind(this)}
+          handleSubmit={this.handleSubmit.bind(this)}
+          name={this.state.name}
+        />
+
       <div  className='grid'>
    
         <div className='ask_form_card'>
           <ChatBox
-            text={this.state.text}
-            username={this.state.username}
-            handleTextChange={this.handleTextChange}
+          content={this.state.content}
+          handleContent={this.handleContent.bind(this)}
+          handleName={this.handleName.bind(this)}
+          handleSubmit={this.handleSubmit.bind(this)}
+          name={this.state.name}
           />
         </div>
 
@@ -65,33 +118,20 @@ class MainChat extends Component {
           <h1>what do you think of poop?</h1>
           </section><br></br><br></br>
         
-        <ChatList chats={this.state.chats} />
+        <ChatList chats={this.state.chat} />
         </div>
 
         <div className='chat_nav'>
           <ChatNav />
         </div>
-      
+      </div>
+
       </div>
     );
   }
 }
 
 export default MainChat;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

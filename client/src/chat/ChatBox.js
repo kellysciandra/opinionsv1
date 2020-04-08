@@ -1,16 +1,30 @@
-import React from "react";
+// import React from "react";
 
 
-export default ({ text, username, handleTextChange }) => ( 
-  <div> 
-    
-      <div>    
-          <h2>Hello, {username}</h2>
-          <input type="text" value={text} placeholder="chat here..." className='input' onChange={handleTextChange} onKeyDown={handleTextChange}/>
-      </div><br></br>
+// export default ({ name, content, handleName, handleSubmit }) => ( 
+//   <div> 
+//       {console.log(name, content)}
+//       <div>    
+//           <h2>Hello, {name}</h2>
+//           {/* <input type="text" value={content} placeholder="chat here..." className='input' onChange={handleName} onKeyDown={handleSubmit}/> */}
+//       </div><br></br>
   
-      <div className='pending_message'>
-        {text}
+//       <div className='pending_message'>
+//         {/* {content} */}
+//       </div>
+//     </div>
+// );
+
+import React, { Component } from 'react';
+
+class ChatBox extends Component {
+  render() {
+    return (
+      <div>
+        
       </div>
-    </div>
-);
+    );
+  }
+}
+
+export default ChatBox;

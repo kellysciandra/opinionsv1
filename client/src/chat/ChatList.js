@@ -9,9 +9,9 @@ export default ({ chats }) => (
           
                 <div key={chat.id}>
                   <div className='display_name'>
-                  {chat.username}: 
+                  {chat.name}: 
                   <span className='display_message'>
-                  {" "}  {" "}{chat.message}
+                  {" "}  {" "}{chat.content}
                   </span>
                   </div>
           </div>
@@ -20,3 +20,5 @@ export default ({ chats }) => (
     })}
   </ul>
 );
+
+

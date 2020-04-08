@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function BottomBar(props) {
+export default function BottomBar(props) { console.log(props)
   const classes = useStyles();
 
   return (
