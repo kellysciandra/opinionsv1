@@ -20,8 +20,6 @@
     "socket.io-client": "^2.3.0"
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"heroku local\" \"npm run start --prefix ./\"",
-    "postinstall": "npm install --prefix ./server && npm install --prefix ./ && npm run build --prefix ./",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
