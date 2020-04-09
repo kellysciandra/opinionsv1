@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import First from './First.js'
-import MainChat from '../chat/MainChat'
+
+// import MainChat from '../chat/MainChat'
+import ChatDashboard from '../chat/ChatDashboard'
+import AllConversations from '../Conversations/AllConversations';
 
 
 class Dashboard extends Component {
@@ -11,11 +13,12 @@ class Dashboard extends Component {
  
         {/* main page container */}
         <section className='showcase'>
-          <First/>
+   
         </section>
 
         <section>
-        <MainChat />
+        {/* <MainChat /> */}
+        <ChatDashboard/>
         </section>
 
       </div>

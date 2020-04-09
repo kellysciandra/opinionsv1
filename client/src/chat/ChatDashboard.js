@@ -80,14 +80,7 @@ class MainChat extends Component {
   }
 
 
-
-
-
-
-
-
-
-  render() { console.log(this.state.chat)
+  render(props) { console.log(this.state, this.props)
     return (
       <div>
         
@@ -102,7 +95,8 @@ class MainChat extends Component {
       <div  className='grid'>
    
       <div className='ask_form_card'>
-          <ConversationsNav conversations={this.state.conversations}/>
+      <h2>live chats</h2>
+          <ConversationsNav />
         </div> 
 
         <div className='display_chat_text'>

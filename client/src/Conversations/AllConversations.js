@@ -4,6 +4,9 @@ import io from 'socket.io-client';
 import config from '../config';
 import BottomBarNew from '../BottomBarNew';
 import ConversationList from './ConversationList';
+import ConversationsNav from './ConversationsNav';
+import ChatNav from '../chat/ChatNav'
+// import MainChat from '../chat/MainChat'
 
 class AllConversations extends Component {
   constructor(props) {
@@ -82,11 +85,13 @@ class AllConversations extends Component {
 
 
 
-  render() { console.log(this.state.conversations)
+  render() { 
     return (
       <div>
-        {this.state.title, this.state._id}
-        
+         <section className='showcase'>
+   
+          </section>
+    
         <BottomBarNew
           _id={this.state._id}
           handleId={this.handleId.bind(this)}
@@ -95,31 +100,29 @@ class AllConversations extends Component {
           title={this.state.title}
         />
 
-      {/* <div  className='grid'> */}
+      <div  className='grid'> 
    
-        {/* <div className='ask_form_card'>
-          <ChatBox
-          content={this.state.content}
-          handleContent={this.handleContent.bind(this)}
-          handleName={this.handleName.bind(this)}
-          handleSubmit={this.handleSubmit.bind(this)}
-          name={this.state.name}
-          />
-        </div> */}
-{/* 
+    
+ 
         <div className='display_chat_text'>
           <section className='display_chat_text_header'>
-          <h1>what do you think of poop?</h1>
+          <h1>{this.state.conversations.title}</h1>
           </section><br></br><br></br>
         
-        <ChatList chats={this.state.chat} />
+        <ConversationList conversations={this.state.conversations} />
+        {/* <MainChat conversations={this.state.conversations} /> */}
         </div>
 
         <div className='chat_nav'>
           <ChatNav />
         </div>
-      </div> */}
-              <ConversationList chats={this.state.conversations} />
+
+        <div className='ask_form_card'>
+        <h2>live chats</h2>
+          <ConversationsNav conversations={this.state.conversations}/>
+        </div> 
+      </div>
+              
       </div>
     );
   }

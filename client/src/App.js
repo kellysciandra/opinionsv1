@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Router } from 'react-router-dom'
 
-import MainChat from './chat/MainChat.js';
-
+// import MainChat from './chat/MainChat.js';
+import ChatDashboard from './chat/ChatDashboard.js'
 
 //styling
 import './App.css';
@@ -12,7 +12,7 @@ import './index.css'
 import Dashboard from './layout/Dashboard'
 import NavBar from './layout/NavBar'
 import Footer from './layout/Footer'
-import Test from './layout/Test'
+
 import ModalExample from './chat/ModalExample'
 import AllConversations from './Conversations/AllConversations'
 //history
@@ -28,8 +28,9 @@ class App extends Component {
         <Router history={history}>
         <NavBar />
         <Route exact path="/" component={Dashboard}/>
-        <Route exact path="/test" component={Test}/>
-        <Route exact path="/chat" component={MainChat}/>
+   
+        {/* <Route exact path="/chat" component={MainChat}/> */}
+        <Route exact path="/chat" component={ChatDashboard}/>
         <Route exact path="/modal" component={ModalExample}/>
         <Route exact path="/conversations" component={AllConversations}/>
         <Footer />
