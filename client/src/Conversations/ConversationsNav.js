@@ -29,18 +29,18 @@ import ChatDashboard from '../chat/ChatDashboard'
 
 class ConversationsNav extends Component {
 
-  passProp(prop) { 
-    return <ChatDashboard conv_id={prop}/>
+  passProp(conv) { 
+    return <ChatDashboard conv={conv}/>
   }
   
   render(props) { 
 
-      let conv = this.props.conversations ? this.props.conversations.map(conv => {
+      let conv = this.props.conversations ? this.props.conversations.map(conv => { console.log(conv)
         return (
           <ul>
                 <div className='chat_links_left'>     <br></br>  
                        <div key={conv.id}>         
-                        <Link to={`/chat/about/${conv._id}`} onClick={ (event) => this.passProp(conv._id)} >{conv._id}</Link>                        
+                        <Link to={`/chat/about/${conv._id}`} onClick={ (event) => this.passProp(conv.title)} >{conv._id}</Link>                        
                  </div>
                 </div>
           </ul>

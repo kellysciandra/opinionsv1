@@ -12,7 +12,7 @@ import BottomBar from '../BottomBar';
 
 
 class MainChat extends Component {
-  constructor(props) {
+  constructor(props) { 
     super(props);
     this.state = {
       chat: [],
@@ -67,6 +67,7 @@ class MainChat extends Component {
       this.socket.emit('message', {
         name: state.name,
         content: state.content,
+        conversation_id: this.props.match.params.id
       });
 
       // Update the chat with the user's message and remove the current message.
@@ -81,7 +82,7 @@ class MainChat extends Component {
   }
 
 
-  render() { console.log(this.state, this.props)
+  render() { console.log(this.state, this.props.conv)
     return (
       <div>
          <section className='showcase'>
@@ -104,7 +105,7 @@ class MainChat extends Component {
 
         <div className='display_chat_text'>
           <section className='display_chat_text_header'>
-          <h1>{this.props.conv_id}</h1>
+          <h1>{this.props.match.params.id}</h1>
           </section><br></br><br></br>
         
         <ChatList chats={this.state.chat} />
