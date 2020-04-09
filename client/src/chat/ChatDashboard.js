@@ -18,6 +18,7 @@ class MainChat extends Component {
       chat: [],
       content: '',
       name: '',
+      conversation_id: ''
     };
   }
 
@@ -83,6 +84,8 @@ class MainChat extends Component {
   render(props) { console.log(this.state, this.props)
     return (
       <div>
+         <section className='showcase'>
+         </section>
         
         <BottomBar
           content={this.state.content}
@@ -95,13 +98,13 @@ class MainChat extends Component {
       <div  className='grid'>
    
       <div className='ask_form_card'>
-      <h2>live chats</h2>
+        <h2>live chats</h2>
           <ConversationsNav />
         </div> 
 
         <div className='display_chat_text'>
           <section className='display_chat_text_header'>
-          <h1>what do you think of poop?</h1>
+          <h1>{this.props.conv_id}</h1>
           </section><br></br><br></br>
         
         <ChatList chats={this.state.chat} />

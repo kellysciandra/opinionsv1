@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Router } from 'react-router-dom'
+import { Route, Router, Switch, useParams } from 'react-router-dom'
 
-// import MainChat from './chat/MainChat.js';
+import MainChat from './chat/MainChat.js';
 import ChatDashboard from './chat/ChatDashboard.js'
 
 //styling
@@ -29,17 +29,22 @@ class App extends Component {
         <NavBar />
         <Route exact path="/" component={Dashboard}/>
    
-        {/* <Route exact path="/chat" component={MainChat}/> */}
-        <Route exact path="/chat" component={ChatDashboard}/>
+      
+        <Route exact path="/chat" component={MainChat}/>
         <Route exact path="/modal" component={ModalExample}/>
         <Route exact path="/conversations" component={AllConversations}/>
         <Footer />
+        <Switch>
+        <Route path="/chat/about/:id" component={ChatDashboard} />
+        </Switch>
         </Router>
    
       </div>
     );
   }
 }
+
+
 
 export default App;
 

@@ -24,7 +24,7 @@
 
 
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Switch, Route, useParams } from "react-router-dom";
 import ChatDashboard from '../chat/ChatDashboard'
 
 class ConversationsNav extends Component {
@@ -40,7 +40,7 @@ class ConversationsNav extends Component {
           <ul>
                 <div className='chat_links_left'>     <br></br>  
                        <div key={conv.id}>         
-                        <Link to={'/'} onClick={ (event) => this.passProp(conv._id)} >{conv._id}</Link>
+                        <Link to={`/chat/about/${conv._id}`} onClick={ (event) => this.passProp(conv._id)} >{conv._id}</Link>                        
                  </div>
                 </div>
           </ul>
@@ -54,5 +54,8 @@ class ConversationsNav extends Component {
     );
   }
 }
+
+
+
 
 export default ConversationsNav;
