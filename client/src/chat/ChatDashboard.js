@@ -81,7 +81,7 @@ class MainChat extends Component {
   }
 
 
-  render(props) { console.log(this.state, this.props)
+  render(props) { console.log(this.state, this.props.params.id)
     return (
       <div>
          <section className='showcase'>
