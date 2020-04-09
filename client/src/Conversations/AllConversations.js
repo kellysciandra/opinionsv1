@@ -51,8 +51,6 @@ class AllConversations extends Component {
   }
   // When the user is posting a new message.
   handleSubmit(event) {
-    console.log(event);
-
     // Prevent the form to reload the current page.
     event.preventDefault();
 
@@ -76,13 +74,6 @@ class AllConversations extends Component {
       };
     });
   }
-
-
-
-
-
-
-
 
 
   render() { 

@@ -30,7 +30,7 @@ import ChatDashboard from '../chat/ChatDashboard'
 class ConversationsNav extends Component {
 
   passProp(prop) { 
-    return <ChatDashboard conv_id = {prop}/>
+    return <ChatDashboard conv_id={prop}/>
   }
   
   render(props) { 
