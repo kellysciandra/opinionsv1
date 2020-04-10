@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import io from 'socket.io-client';
 import ChatList from './ChatList';
-import ConversationsNav from '../Conversations/ConversationsNav';
-import ChatNav from './ChatNav'
+import ActiveConversation from '../conversation/ActiveConversation'
+import ActiveUsers from './ActiveUsers'
 import config from '../config';
 
 
@@ -102,19 +102,24 @@ class MainChat extends Component {
       <div  className='grid'>
    
       <div className='ask_form_card'>
-          <ConversationsNav conversations={this.state.conversations}/>
+      <section className='display_chats_text_header'>
+          <h1>live chats</h1>
+          </section><br></br><br></br>
+          <ActiveConversation conversations={this.state.conversations}/>
         </div> 
 
         <div className='display_chat_text'>
-          <section className='display_chat_text_header'>
-          <h1>what do you think of poop?</h1>
+          <section className='display_welcome_text_header'>
+          <h1>welcome to the site</h1>
           </section><br></br><br></br>
-        
         <ChatList chats={this.state.chat} />
         </div>
 
         <div className='chat_nav'>
-          <ChatNav />
+        <section className='display_users_text_header'>
+          <h1>active users</h1>
+          </section>
+          <ActiveUsers name={this.state.chat.name}/>
         </div>
       </div>
 

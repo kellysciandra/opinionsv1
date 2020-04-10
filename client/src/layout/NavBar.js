@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 // import { connect } from 'react-redux';
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavbarBrand, Form, Input, NavLink  } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavbarBrand, Form, Input, NavLink, Tooltip } from 'reactstrap';
 // import SignedInLinks from './SignedInLinks'
 // import SignedOutLinks from './SignedOutLinks'
 
 const NavBar = (props) => { 
-  const [collapsed, setCollapsed] = useState(true);
+  //navbar toggler
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
-
+  // const [collapsed, setCollapsed] = useState(true);
+  // const toggleNavbar = () => setCollapsed(!collapsed);
   // const links = (props.artist.id) ? <SignedInLinks />
   //       : <SignedOutLinks />
-  const closeNav = () => setCollapsed(collapsed);
+  // const closeNav = () => setCollapsed(collapsed);
 
+
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const toggle = () => setTooltipOpen(!tooltipOpen);
   return (
     <div id='navbar'>  
       <Navbar className='nav' sticky='left' data-spy="affix">
@@ -32,7 +36,13 @@ const NavBar = (props) => {
         <NavbarBrand href='/' className='brand_link'> 
           opinions
         </NavbarBrand> 
-  
+        
+        <Nav>
+          <NavLink href='/conversations'><i id="TooltipExample" class="fas fa-chalkboard fa-2x"></i></NavLink>
+          <Tooltip placement="right" isOpen={tooltipOpen} target="TooltipExample" toggle={toggle}>
+        new thread
+      </Tooltip>
+        </Nav>
         
       </Navbar>
     </div>

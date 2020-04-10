@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 
-// import MainChat from '../chat/MainChat'
-import ChatDashboard from '../chat/ChatDashboard'
-import AllConversations from '../Conversations/AllConversations';
+import MainChat from '../chat/MainChat'
+
+
 
 
 class Dashboard extends Component {
@@ -17,8 +17,7 @@ class Dashboard extends Component {
         </section>
 
         <section>
-        {/* <MainChat /> */}
-        <ChatDashboard/>
+        <MainChat />
         </section>
 
       </div>

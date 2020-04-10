@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import io from 'socket.io-client';
 import ChatList from './ChatList';
-import ConversationsNav from '../Conversations/ConversationsNav';
-import ChatNav from './ChatNav'
+import ActiveConversation from '../conversation/ActiveConversation';
+import ActiveUsers from './ActiveUsers'
 import config from '../config';
 
 
@@ -11,7 +11,7 @@ import config from '../config';
 import BottomBar from '../BottomBar';
 
 
-class MainChat extends Component {
+class ChatDashboard extends Component {
   constructor(props) { 
     super(props);
     this.state = {
@@ -64,7 +64,7 @@ class MainChat extends Component {
       console.log(state);
       console.log('this', this.socket);
       // Send the new message to the server.
-      this.socket.emit('message', {
+      this.socket.emit('message', { 
         name: state.name,
         content: state.content,
         conversation_id: this.props.match.params.id
@@ -75,6 +75,7 @@ class MainChat extends Component {
         chat: [...state.chat, {
           name: state.name,
           content: state.content,
+          conversation_id: state.conversation_id
         }],
         content: '',
       };
@@ -99,8 +100,10 @@ class MainChat extends Component {
       <div  className='grid'>
    
       <div className='ask_form_card'>
-        <h2>live chats</h2>
-          <ConversationsNav />
+      <section className='display_chats_text_header'>
+          <h1>live chats</h1>
+          </section>
+          <ActiveConversation />
         </div> 
 
         <div className='display_chat_text'>
@@ -112,7 +115,10 @@ class MainChat extends Component {
         </div>
 
         <div className='chat_nav'>
-          <ChatNav />
+        <section className='display_users_text_header'>
+          <h1>active users</h1>
+          </section>
+          <ActiveUsers />
         </div>
       </div>
 
@@ -121,7 +127,7 @@ class MainChat extends Component {
   }
 }
 
-export default MainChat;
+export default ChatDashboard;
 
 
 

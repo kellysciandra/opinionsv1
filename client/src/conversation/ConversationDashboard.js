@@ -4,11 +4,11 @@ import io from 'socket.io-client';
 import config from '../config';
 import BottomBarNew from '../BottomBarNew';
 import ConversationList from './ConversationList';
-import ConversationsNav from './ConversationsNav';
-import ChatNav from '../chat/ChatNav'
+import ActiveConversation from './ActiveConversation'
+import ActiveUsers from '../chat/ActiveUsers'
 // import MainChat from '../chat/MainChat'
 
-class AllConversations extends Component {
+class ConversationDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,19 +98,24 @@ class AllConversations extends Component {
         <div className='display_chat_text'>
           <section className='display_chat_text_header'>
           <h1>{this.state.conversations.title}</h1>
-          </section><br></br><br></br>
+          </section>
         
         <ConversationList conversations={this.state.conversations} />
         {/* <MainChat conversations={this.state.conversations} /> */}
         </div>
 
         <div className='chat_nav'>
-          <ChatNav />
+        <section className='display_users_text_header'>
+          <h1>active users</h1>
+          </section>
+          <ActiveUsers />
         </div>
 
         <div className='ask_form_card'>
-        <h2>live chats</h2>
-          <ConversationsNav conversations={this.state.conversations}/>
+        <section className='display_chats_text_header'>
+          <h1>live chats</h1>
+          </section>
+          <ActiveConversation conversations={this.state.conversations}/>
         </div> 
       </div>
               
@@ -119,7 +124,7 @@ class AllConversations extends Component {
   }
 }
 
-export default AllConversations;
+export default ConversationDashboard;
 
 
 

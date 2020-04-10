@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Router, Switch, useParams } from 'react-router-dom'
-
-import MainChat from './chat/MainChat.js';
-import ChatDashboard from './chat/ChatDashboard.js'
+import { Provider } from "react-redux";
 
 //styling
 import './App.css';
@@ -12,11 +10,15 @@ import './index.css'
 import Dashboard from './layout/Dashboard'
 import NavBar from './layout/NavBar'
 import Footer from './layout/Footer'
+import ConversationDashboard from './conversation/ConversationDashboard'
 
-import ModalExample from './chat/ModalExample'
-import AllConversations from './Conversations/AllConversations'
+import MainChat from './chat/MainChat.js';
+import ChatDashboard from './chat/ChatDashboard.js'
+
 //history
 import history from './history'
+//redux
+import store from './store'
 
 class App extends Component {
 
@@ -25,20 +27,20 @@ class App extends Component {
 
     return (
       <div>
+        <Provider store={store}>
         <Router history={history}>
         <NavBar />
         <Route exact path="/" component={Dashboard}/>
    
       
         <Route exact path="/chat" component={MainChat}/>
-        <Route exact path="/modal" component={ModalExample}/>
-        <Route exact path="/conversations" component={AllConversations}/>
+        <Route exact path="/conversations" component={ConversationDashboard}/>
         <Footer />
         <Switch>
         <Route path="/chat/about/:id" component={ChatDashboard} />
         </Switch>
         </Router>
-   
+        </Provider>  
       </div>
     );
   }

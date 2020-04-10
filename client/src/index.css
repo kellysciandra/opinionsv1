@@ -132,7 +132,9 @@ input.no-outline:focus {
   margin: auto;
   color: orange!important;
 }
-
+.display_chats_text_header {
+  margin-top: -10%;
+}
 
 /* section 2 */
 
@@ -143,7 +145,7 @@ input.no-outline:focus {
   height: 900px;
 }
 
-.display_chat_text_header {
+.display_welcome_text_header {
   margin-top: -20%;
 }
 
@@ -199,7 +201,9 @@ button {
 }
 
 
-
+.display_users_text_header {
+  
+}
 
 
 
