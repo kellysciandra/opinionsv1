@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Router, Switch, useParams } from 'react-router-dom'
-import { Provider } from "react-redux";
+
 
 //styling
 import './App.css';
@@ -17,8 +17,7 @@ import ChatDashboard from './chat/ChatDashboard.js'
 
 //history
 import history from './history'
-//redux
-import store from './store'
+
 
 class App extends Component {
 
@@ -27,7 +26,7 @@ class App extends Component {
 
     return (
       <div>
-        <Provider store={store}>
+  
         <Router history={history}>
         <NavBar />
         <Route exact path="/" component={Dashboard}/>
@@ -40,7 +39,7 @@ class App extends Component {
         <Route path="/chat/about/:id" component={ChatDashboard} />
         </Switch>
         </Router>
-        </Provider>  
+
       </div>
     );
   }
